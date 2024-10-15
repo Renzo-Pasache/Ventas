@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarketSpot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img class="logo" src="img/logo.jpg" alt="logo">
+            <nav> 
+                <a href="index.html">Inicio</a>
+                <a href="index.html">Quienes Somos</a>
+                <a href="index.html">Productos</a>
+                <a href="index.html">Modo de Uso</a>
+            </nav>
+        </div>
+    </header>
+    <section id="contacto">
+        <h2>Realizar Pedido</h2>
+        <div class="container">
+                <form class="formulario">
+                    <fieldset>
+                        <legend>Información Personal</legend>
+                        <label for="name">Nombre 
+                            <input class="name" id="name" name='nombre' type='text' required>
+                        </label>
+                        <label for="lastname">Apellido
+                            <input class="lastname" id="lastname" name='apellidos' type='text' required>
+                        </label>
+                        <label for="iphone">Celular
+                        <input class="iphone" id="iphone" type="text" name="iphone" required>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <legend for="tipo">Tipo de Combo</legend>
+                        <input class="tipo" list="tipo" name="tipo" placeholder="Que combo deseas">
+                        <datalist id="tipo">
+                            <option value="combo1"></option>
+                            <option value="combo2"></option>
+                            <option value="combo3"></option>ç
+                            <option value="combo4"></option>
+                        </datalist>
+                    </fieldset>
+                    <fieldset>
+                        <legend for="entrega">Lugar de Entrega</legend>
+                        <input class="entrega" list="entrega" name="entrega" placeholder="Donde deseeas recibirlo">
+                        <datalist id="entrega">
+                            <option value="Tottus"></option>
+                            <option value="Plaza de Armas"></option>
+                            <option value="Maestro"></option>
+                        </datalist>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Nota adicional</legend>
+                        <label for="mensaje">Mensaje <br>
+                            <textarea class="mensaje" id="mensaje" placeholder="Escribe tu mensaje"></textarea>
+                        </label>
+                    </fieldset>
+                    <label for="accept">Acepta los terminos y condiciones
+                        <input type="checkbox" id="accept">
+                    </label>
+                    <button>
+                        <a type="button" onclick="sendwhatsapp();">Enviar</a>
+                    </button>
+                </form>
+            </div>
+    </section>
+    <script>
+        function sendwhatsapp(){
+            let phonenumber = "936976521";
+            
+            let name = document.querySelector('.name').value;
+            let lastname = document.querySelector('.lastname').value;
+            let email = document.querySelector('.email').value;
+            let iphone = document.querySelector('.iphone').value;
+            let tipo = document.querySelector('.tipo').value;
+            let entrega = document.querySelector('.entrega').value;
+            let mensaje = document.querySelector('.mensaje').value;
+
+            let url = "https://wa.me/" + phonenumber + "?text="
+            + "*Nombre :* " +name+"%0a"
+            + "*Apellido :* " +lastname+"%0a"
+            + " *Email :* " +email+"%0a"
+            + "*Celular :* " +iphone+"%0a"
+            + "*Tipo :* " +tipo+"%0a"
+            + " *Entrega :* " +entrega+"%0a"
+            + " *Mensaje :* " +mensaje+"%0a%0a"
+            + "Muchas Gracias";
+            
+            window.open(url, '_blank').focus();
+        }
+    </script>
